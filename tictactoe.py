@@ -1,8 +1,8 @@
-board=[['' for i in range(0,3)]for j in range(0,3)]
+board=[[' ' for i in range(0,3)]for j in range(0,3)]
 
 def move(player,i,j):
     if(player==1):
-        if(i<3 and j<3 and board[i][j]==''):
+        if(i<3 and j<3 and board[i][j]==' '):
             board[i][j]='X'
             if(checkWinner(player)):
                 print("Player 1 Wins!")
@@ -11,7 +11,7 @@ def move(player,i,j):
             print('Invalid Move. Try again!!!')
             play(1)
     else:
-        if(i<3 and j<3 and board[i][j]==''):
+        if(i<3 and j<3 and board[i][j]==' '):
             board[i][j]='O'
             if(checkWinner(player)):
                 print("Player 2 Wins!")
@@ -24,7 +24,7 @@ def checkWinner(player):
     cnt=0
     for i in range(0,3):
         for j in range(0,3):
-            if(board[i][j]==''):
+            if(board[i][j]==' '):
                 cnt+=1
     if(cnt==0):
         print("Game Tie!!!")
@@ -67,9 +67,15 @@ def checkWinner(player):
                 return 1
             else:
                 return 0
-        
+
 def printBoard():
-    print(*board,sep='\n')
+    print("+- - -+")
+    print("|"+ board[0][0] + '|' + board[0][1] + '|' + board[0][2]+"|")
+    print("+- - -+")
+    print("|"+ board[1][0] + '|' + board[1][1] + '|' + board[1][2]+"|")
+    print("+- - -+")
+    print("|"+ board[2][0] + '|' + board[2][1] + '|' + board[2][2]+"|")
+    print("+- - -+")
 
 def play(player):
     print("Player {}: Enter i,j value:-".format(player))
